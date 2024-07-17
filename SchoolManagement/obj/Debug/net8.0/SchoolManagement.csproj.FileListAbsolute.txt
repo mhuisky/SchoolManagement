@@ -1,8 +1,4 @@
 C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\bin\Debug\net8.0\SchoolManagement.exe
-C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\bin\Debug\net8.0\SchoolManagement.deps.json
-C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\bin\Debug\net8.0\SchoolManagement.runtimeconfig.json
-C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\bin\Debug\net8.0\SchoolManagement.dll
-C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\bin\Debug\net8.0\SchoolManagement.pdb
 C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\bin\Debug\net8.0\MM.dll
 C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\bin\Debug\net8.0\MM.pdb
@@ -16,5 +12,9 @@ C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\obj\Debug\
 C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\obj\Debug\net8.0\SchoolManagement.dll
 C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\obj\Debug\net8.0\refint\SchoolManagement.dll
 C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\obj\Debug\net8.0\SchoolManagement.pdb
+C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\bin\Debug\net8.0\SchoolManagement.deps.json
+C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\bin\Debug\net8.0\SchoolManagement.runtimeconfig.json
+C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\bin\Debug\net8.0\SchoolManagement.dll
+C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\bin\Debug\net8.0\SchoolManagement.pdb
 C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\obj\Debug\net8.0\SchoolManagement.genruntimeconfig.cache
 C:\Users\marcelo.munoz\source\repos\SchoolManagement\SchoolManagement\obj\Debug\net8.0\ref\SchoolManagement.dll
