@@ -33,7 +33,7 @@ namespace SchoolManagement.Functions
                         var Address = GeneralFunctions.ReadString();
                         Console.Write("Enter The Phone No: ");
                         var PhoneNo = GeneralFunctions.ReadString();
-                        Console.Write("Enter The GPA: ");
+                        Console.Write("Enter The Department: ");
                         double GPA = GeneralFunctions.ReadDouble();
                         Console.WriteLine("Enter The Major: ");
                         int MajorSelection = MenuFunctions.CreateMenu(School.GetMajors())-1;

@@ -18,8 +18,8 @@ namespace SchoolManagement.Models
         public School()
         {
             Students = new List<Student>();
-/*          Teachers = new List<Teacher>();
-            Courses = new List<Course>();*/
+            Teachers = new List<Teacher>();
+  /*          Courses = new List<Course>();*/
         }
 
         public void AddToSchool(Student newStudent)

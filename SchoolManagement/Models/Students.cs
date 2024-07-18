@@ -9,14 +9,9 @@ using System.Threading.Tasks;
 
 namespace SchoolManagement.Models
 {
-    internal class Student : School
+    internal class Student : People
     {
         private int _id;
-        private string _firstname;
-        private string _lastname;
-        private DateTime _birthdDate;
-        private string _address;
-        private string _phoneNo;
         private DateTime _enrrollmentDate;
         private Major _major;
         private double _gpa;
@@ -35,60 +30,6 @@ namespace SchoolManagement.Models
                     throw new ArgumentException("Id Can't Be Negative");
                 }
                 _id = value;
-            }
-        }
-        public string FirstName { 
-            get 
-            {
-                return _firstname;
-            } 
-            set 
-            {
-                _firstname = value; 
-            } 
-        }
-        public string LastName
-        {
-            get
-            {
-                return _lastname;
-            }
-            set
-            {
-                _lastname = value;
-            }
-        }
-        public DateTime BirthDate
-        {
-            get
-            {
-                return _birthdDate;
-            }
-            set
-            {
-                _birthdDate = value;
-            }
-        }
-        public string Addres
-        {
-            get
-            {
-                return _address;
-            }
-            set
-            {
-                _address = value;
-            }
-        }
-        public string PhoneNo
-        {
-            get
-            {
-                return _phoneNo;
-            }
-            set
-            {
-                _phoneNo = value;
             }
         }
         public DateTime EnrrollmentDate
@@ -140,17 +81,12 @@ namespace SchoolManagement.Models
             }
         }
 
-        public Student(int id, string newFirstName, string newLastName, DateTime newBirthDate, string newAddress, string newPhoneNo, double newGPA, int newMajor) 
+        public Student(int id, string newFirstName, string newLastName, DateTime newBirthDate, string newAddress, string newPhoneNo, double newGPA, int newMajor) : base(newFirstName, newLastName, newBirthDate, newAddress, newPhoneNo)
         {
-            Id = id;
-            _firstname = newFirstName;
-            _lastname = newLastName;
-            BirthDate = newBirthDate;
-            _address = newAddress;
-            _phoneNo = newPhoneNo;
+            _id = id;
             _gpa = newGPA;
-            EnrrollmentDate = DateTime.Now; 
-            StudentMajor = (Major)newMajor;
+            _enrrollmentDate = DateTime.Now;
+            _major = (Major)newMajor;
         }
 
         public void DisplayStudentInfo()
