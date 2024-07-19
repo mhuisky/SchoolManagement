@@ -42,12 +42,23 @@ if (!File.Exists(TeacherFilePath))
     }
 }
 
+if (!File.Exists(CourseFilePath))
+{
+    using (FileStream fs = File.Create(CourseFilePath))
+    {
+    }
+    using (StreamWriter sw = new StreamWriter(CourseFilePath))
+    {
+        sw.Write("[]");
+    }
+}
+
 List<Student> AllStudents = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Student>>(StudentFilePath);
 List<Teacher> AllTeachers = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Teacher>>(TeacherFilePath);
+List<Course> AllCourses = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Course>>(CourseFilePath);
 
 IDGenerator StudentidGenerator = new IDGenerator();
 IDGenerator TeacheridGenerator = new IDGenerator();
-IDGenerator CourseidGenerator = new IDGenerator();
 School mySchool = new School();
 
 foreach (Student student in AllStudents)
@@ -60,6 +71,11 @@ foreach (Teacher teacher in AllTeachers)
 {
     mySchool.Teachers.Add(teacher);
     TeacheridGenerator.currentID++;
+}
+
+foreach (Course course in AllCourses)
+{
+    mySchool.Courses.Add(course);
 }
 
 
@@ -98,6 +114,7 @@ do
                 {
                     MenuFunctions.PrintHeader("Courses");
                     courseSelection = MenuFunctions.CreateMenu(CursesMenu);
+                    CourseFunctions.CourseManagement(courseSelection, mySchool, CourseFilePath, AllCourses);
                     Console.Clear();
                 } while (courseSelection != 5);
                 break;

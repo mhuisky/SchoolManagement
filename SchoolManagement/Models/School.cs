@@ -12,14 +12,14 @@ namespace SchoolManagement.Models
     internal class School
     {
         public List<Student> Students;
-        public List<Teacher> Teachers = new List<Teacher>();
-        public List<Course> Courses = new List<Course>();
+        public List<Teacher> Teachers;
+        public List<Course> Courses;
 
         public School()
         {
             Students = new List<Student>();
             Teachers = new List<Teacher>();
-  /*          Courses = new List<Course>();*/
+            Courses = new List<Course>();
         }
 
         public void AddToSchool(Student newStudent)

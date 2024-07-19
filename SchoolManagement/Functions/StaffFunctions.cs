@@ -39,7 +39,7 @@ namespace SchoolManagement.Functions
                     Console.WriteLine("Enter The Salary: ");
                     decimal Salary = GeneralFunctions.ReadDecimal();
                     Teacher newTeacher = new Teacher(IdGenerated.GenerateID(), FirstName, LasttName, ActualBD, Address, PhoneNo, Department, Specialization, Salary);*/
-                    //Teacher newTeacher = new Teacher(IdGenerated.GenerateID(), "Marcelo", "Muñoz", Utils.Utils.GetDate("12/22/1993"), "Av. The Strongest", "73246114", "Math", "Arithmetics", 4500);
+                    Teacher newTeacher = new Teacher(IdGenerated.GenerateID(), "Marcelo", "Muñoz", Utils.Utils.GetDate("12/22/1993"), "Av. The Strongest", "73246114", "Math", "Arithmetics", 4500);
                     school.Teachers.Add(newTeacher);
                     GeneralFunctions.JsonSerialization.WriteToJsonFile<List<Teacher>>(teacherPath, school.Teachers);
                     Console.WriteLine($"Teacher {newTeacher.FirstName} was Added!");
