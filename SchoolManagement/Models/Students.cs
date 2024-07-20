@@ -16,6 +16,8 @@ namespace SchoolManagement.Models
         private Major _major;
         private double _gpa;
         private int _creditsErned;
+        private List <Grade> _grades;
+        private List<Course> _studentCourses;
 
         public int Id 
         {
@@ -81,12 +83,26 @@ namespace SchoolManagement.Models
             }
         }
 
-        public Student(int id, string newFirstName, string newLastName, DateTime newBirthDate, string newAddress, string newPhoneNo, double newGPA, int newMajor) : base(newFirstName, newLastName, newBirthDate, newAddress, newPhoneNo)
+        public List<Grade> StudentGrades
         {
-            _id = id;
+            get
+            {
+                return _grades;
+            }
+            set
+            {
+                _grades = value;
+            }
+        }
+
+        public Student(string newFirstName, string newLastName, DateTime newBirthDate, string newAddress, string newPhoneNo, double newGPA, int newMajor) : base(newFirstName, newLastName, newBirthDate, newAddress, newPhoneNo)
+        {
+            _id = base.StudentidGenerator.GenerateID();
             _gpa = newGPA;
             _enrrollmentDate = DateTime.Now;
             _major = (Major)newMajor;
+            _grades = new List<Grade>();
+            _studentCourses = new List<Course>();
         }
 
         public void DisplayStudentInfo()
@@ -105,7 +121,7 @@ namespace SchoolManagement.Models
             {
                 throw new ArgumentOutOfRangeException("value");
             }
-            CreditsErned = Value;
+            CreditsErned = CreditsErned + Value;
         }
     }
 

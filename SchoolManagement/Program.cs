@@ -16,52 +16,10 @@ int staffSelection = 0;
 int courseSelection = 0;
 int gradeSelection = 0;
 
-string StudentFilePath = "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\Students.txt";
-string TeacherFilePath = "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\Teachers.txt";
-string CourseFilePath = "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\Courses.txt";
-
-if (!File.Exists(StudentFilePath))
-{
-    using (FileStream fs = File.Create(StudentFilePath))
-    {
-    }
-    using (StreamWriter sw = new StreamWriter(StudentFilePath))
-    {
-        sw.Write("[]");
-    }
-}
-
-if (!File.Exists(TeacherFilePath))
-{
-    using (FileStream fs = File.Create(TeacherFilePath))
-    {
-    }
-    using (StreamWriter sw = new StreamWriter(TeacherFilePath))
-    {
-        sw.Write("[]");
-    }
-}
-
-List<Student> AllStudents = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Student>>(StudentFilePath);
-List<Teacher> AllTeachers = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Teacher>>(TeacherFilePath);
-
-IDGenerator StudentidGenerator = new IDGenerator();
-IDGenerator TeacheridGenerator = new IDGenerator();
-IDGenerator CourseidGenerator = new IDGenerator();
 School mySchool = new School();
-
-foreach (Student student in AllStudents)
-{
-    mySchool.Students.Add(student);
-    StudentidGenerator.currentID++;
-}
-
-foreach (Teacher teacher in AllTeachers)
-{
-    mySchool.Teachers.Add(teacher);
-    TeacheridGenerator.currentID++;
-}
-
+mySchool.Students = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Student>>(mySchool.StudentFilePath);
+mySchool.Teachers = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Teacher>>(mySchool.TeacherFilePath);
+mySchool.Courses = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Course>>(mySchool.CourseFilePath);
 
 do
 {
@@ -78,7 +36,7 @@ do
                 {
                     MenuFunctions.PrintHeader("Students");
                     studentSelection = MenuFunctions.CreateMenu(StudentMenu);
-                    StudentsFunctions.StudentsManagement(studentSelection, StudentidGenerator, mySchool, StudentFilePath, AllStudents);
+                    StudentsFunctions.StudentsManagement(studentSelection, mySchool);
                     Console.Clear();
                 } while (studentSelection != 4);
                 break;
@@ -88,7 +46,7 @@ do
                 {
                     MenuFunctions.PrintHeader("Staff");
                     staffSelection = MenuFunctions.CreateMenu(StafftMenu);
-                    StaffFunctions.StafManagement(staffSelection,TeacheridGenerator,mySchool,TeacherFilePath, AllTeachers);
+                    StaffFunctions.StafManagement(staffSelection,mySchool);
                     Console.Clear();
                 } while (staffSelection != 3);
                 break;
@@ -98,6 +56,7 @@ do
                 {
                     MenuFunctions.PrintHeader("Courses");
                     courseSelection = MenuFunctions.CreateMenu(CursesMenu);
+                    CourseFunctions.CourseManagement(courseSelection, mySchool);
                     Console.Clear();
                 } while (courseSelection != 5);
                 break;
@@ -107,6 +66,7 @@ do
                 {
                     MenuFunctions.PrintHeader("Grades");
                     gradeSelection = MenuFunctions.CreateMenu(GradesMenu);
+                    GradeFuntions.GradeManagement(gradeSelection, mySchool);
                     Console.Clear();
                 } while (gradeSelection != 5);
                 break;

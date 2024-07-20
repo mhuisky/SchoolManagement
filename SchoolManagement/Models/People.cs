@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagement.Models
 {
-    internal class People :School
+    internal class People : School
     {
         private string _firstname;
         private string _lastname;
