@@ -79,9 +79,9 @@ namespace SchoolManagement.Models
             }
         }
 
-        public Teacher(int id, string newFirstName, string newLastName, DateTime newBirthDate, string newAddress, string newPhoneNo,string newDepartment , string newSpecialization, decimal newSalary) : base(newFirstName, newLastName, newBirthDate, newAddress, newPhoneNo)
+        public Teacher(string newFirstName, string newLastName, DateTime newBirthDate, string newAddress, string newPhoneNo,string newDepartment , string newSpecialization, decimal newSalary) : base(newFirstName, newLastName, newBirthDate, newAddress, newPhoneNo)
         {
-            _id = id;
+            _id = base.TeacheridGenerator.GenerateID();
             _hireDate = DateTime.Now;
             _department = newDepartment;
             _specialization = newSpecialization;

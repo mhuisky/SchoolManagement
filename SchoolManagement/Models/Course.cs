@@ -13,12 +13,13 @@ namespace SchoolManagement.Models
         private string _coursename;
         private int _credits;
         private Teacher _teacher;
-        private List<Student> _students;
+        private List<Student> _courseStudents;
         private string _description;
         private string _schedule;
         // private enum
-        private decimal _approvalScore;
+        private double _approvalScore;
         private double _minGPA;
+        private List<Grade> _coursegrades;
 
         private static Guid Id
         {
@@ -42,24 +43,24 @@ namespace SchoolManagement.Models
             {
                 if (_teacher == null)
                 {
-                    Teacher emptyTeacher = new Teacher(0,"N/A","", Utils.Utils.GetDate("1/1/0001"), "", "","","",0);
+                    Teacher emptyTeacher = new Teacher("N/A","", Utils.Utils.GetDate("1/1/0001"), "", "","","",0);
                     return emptyTeacher;
                 }
                 return _teacher; 
             }
             set { _teacher = value; }
         }
-        public List<Student> Students
+        public List<Student> CourseStudents
         {
-            get { return _students; }
-            set { _students = value; }
+            get { return _courseStudents; }
+            set { _courseStudents = value; }
         }
         public string Description
         {
             get { return _description; }
             set { _description = value; }
         }
-        public decimal ApprovalScore
+        public double ApprovalScore
         {
             get { return _approvalScore; }
             set 
@@ -84,7 +85,19 @@ namespace SchoolManagement.Models
             }
         }
 
-        public Course( string NewCourseName, int newCredits, string newDescription, string newSchedule, decimal newApprovalScore, double newMinGPA)
+        public List<Grade> CourseGrades
+        {
+            get
+            {
+                return _coursegrades;
+            }
+            set
+            {
+                _coursegrades = value;
+            }
+        }
+
+        public Course( string NewCourseName, int newCredits, string newDescription, string newSchedule, double newApprovalScore, double newMinGPA)
         {
             _id = Guid.NewGuid();
             _coursename = NewCourseName;
@@ -93,14 +106,14 @@ namespace SchoolManagement.Models
             _approvalScore = newApprovalScore;
             _minGPA = newMinGPA;
             _schedule = newSchedule;
-            //_teacher = new Teacher();
-            _students = new List<Student>();
+            _courseStudents = new List<Student>();
+            _coursegrades = new List<Grade>();
 
         }
 
         public void EnrollStudnet(Student newStudent)
         {
-            Students.Add(newStudent);
+            CourseStudents.Add(newStudent);
             Console.WriteLine($"Studnet {newStudent.FirstName} was Added To the Course {CourseName}!");
         }
 
@@ -121,7 +134,7 @@ namespace SchoolManagement.Models
             Console.WriteLine("Min GPA: " + MinGPA);
             Console.WriteLine("Teacher: " + CourseTeacher.FirstName);
             Console.WriteLine("Students: ");
-            foreach(Student student in Students) 
+            foreach(Student student in CourseStudents) 
             {
                 Console.WriteLine("------------------------------------");
                 student.DisplayStudentInfo();
