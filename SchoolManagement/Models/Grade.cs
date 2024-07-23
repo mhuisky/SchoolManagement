@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagement.Models
 {
-    internal class Grade : School
+    internal class Grade
     {
         private static Guid _id;
         private Course _course;
@@ -54,6 +54,10 @@ namespace SchoolManagement.Models
                 if (value < 0)
                 {
                     throw new ArgumentException("Score can't be negative!");
+                }
+                if (value > 100)
+                {
+                    throw new ArgumentException("Score Can't be higher than 100!");
                 }
                 _score = value;
             }

@@ -11,7 +11,7 @@ namespace SchoolManagement.Functions
 {
     internal class StudentsFunctions
     {
-        public static void StudentsManagement(int Selection, School mySchool) 
+        public static void StudentsManagement(int Selection, School mySchool, IDGenerator idGenerator) 
         {
             int SelectedID;
             bool found = false;
@@ -22,25 +22,33 @@ namespace SchoolManagement.Functions
                     case 1:
                     // Add Student
                         Console.Clear();
-    /*                  Console.Write("Enter The First Name: ");
+                        Console.Write("Enter The First Name: ");
                         var FirstName = GeneralFunctions.ReadString();
+
                         Console.Write("Enter The Last Name: ");
                         var LasttName = GeneralFunctions.ReadString();
+
                         Console.Write("Enter The Birthdate (mm/dd/yyyy): ");
                         string BirhtDate = GeneralFunctions.ReadString();
                         DateTime ActualBD = Utils.Utils.GetDate(BirhtDate);
+
                         Console.Write("Enter The Address: ");
                         var Address = GeneralFunctions.ReadString();
+
                         Console.Write("Enter The Phone No: ");
                         var PhoneNo = GeneralFunctions.ReadString();
-                        Console.Write("Enter The Department: ");
+
+                        Console.Write("Enter The GPA: ");
                         double GPA = GeneralFunctions.ReadDouble();
+
                         Console.WriteLine("Enter The Major: ");
-                        int MajorSelection = MenuFunctions.CreateMenu(School.GetMajors())-1;
-                        Student newStudent = new Student(IdGenerated.GenerateID(), FirstName, LasttName, ActualBD, Address, PhoneNo, GPA, MajorSelection, AllStudents);*/
-                        Student newStudent = new Student("Marcelo", "Muñoz", Utils.Utils.GetDate("12/22/1993"), "Av. The Strongest", "73246114", 50.0, 1);
+                        int MajorSelection = MenuFunctions.CreateMenu(Student.GetMajors()) - 1;
+
+                        Console.Clear();
+                        Student newStudent = new Student(idGenerator.GenerateID(), FirstName, LasttName, ActualBD, Address, PhoneNo, GPA, MajorSelection);
+                        //Student newStudent = new Student(idGenerator.GenerateID(), "Marcelo", "Muñoz", Utils.Utils.GetDate("12/22/1993"), "Av. The Strongest", "73246114", 50.0, 1);
                         mySchool.AddToSchool(newStudent);
-                        Console.WriteLine($"Student {newStudent.FirstName} was Added!");
+                        Console.WriteLine($"Student {newStudent.FirstName}  {newStudent.LastName} was Added!");
                         newStudent.DisplayStudentInfo();
                         Console.ReadLine();
                         break;
@@ -50,16 +58,16 @@ namespace SchoolManagement.Functions
                         int CreditsErned;
                         Console.Write("Intorduce the Id of the Student: ");
                         SelectedID = GeneralFunctions.ReadNumber();
-                        foreach (Student student in mySchool.Students)
+                        foreach (Student student in mySchool.SchoolStudents)
                         {
                             if (student.Id == SelectedID)
                             {
-                                Console.WriteLine($"Actual Amount of Credits of {student.FirstName}: {student.CreditsErned}");
+                                Console.WriteLine($"Actual Amount of Credits of {student.FirstName}  {student.LastName}: {student.CreditsErned}");
                                 Console.Write($"How Many Credits You want to add?:");
                                 CreditsErned = GeneralFunctions.ReadNumber();
                                 student.AddCredits(CreditsErned);
                                 mySchool.UpdateSchool();
-                                Console.WriteLine($"{CreditsErned} Credits Were added to {student.FirstName}!");
+                                Console.WriteLine($"{CreditsErned} Credits Were added to {student.FirstName} {student.LastName}!");
                                 found = true;
                             }
                         }
@@ -75,7 +83,7 @@ namespace SchoolManagement.Functions
                         Console.Clear();
                         Console.Write("Intorduce the Id of the Student: ");
                         SelectedID = GeneralFunctions.ReadNumber();
-                        foreach(Student student in mySchool.Students)
+                        foreach(Student student in mySchool.SchoolStudents)
                         {
                             if(student.Id == SelectedID)
                             {

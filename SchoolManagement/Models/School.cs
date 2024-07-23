@@ -12,26 +12,22 @@ namespace SchoolManagement.Models
     
     internal class School
     {
-        public List<Student> Students;
+        public List<Student> SchoolStudents;
         public List<Teacher> Teachers;
         public List<Course> Courses;
-        //public List<Grade> Grades;
-
-
-        public IDGenerator StudentidGenerator = new IDGenerator();
-        public IDGenerator TeacheridGenerator = new IDGenerator();
 
         public string StudentFilePath = "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\Students.txt";
         public string TeacherFilePath = "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\Teachers.txt";
         public string CourseFilePath = "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\Courses.txt";
 
+
+        public IDGenerator StudentidGenerator = new IDGenerator();
+
         public School()
         {
-            Students = new List<Student>();
+            SchoolStudents = new List<Student>();
             Teachers = new List<Teacher>();
             Courses = new List<Course>();
-            //Grades = new List<Grade>();
-
 
             if (!File.Exists(StudentFilePath))
             {
@@ -65,18 +61,30 @@ namespace SchoolManagement.Models
                     sw.Write("[]");
                 }
             }
-/*
-            Students = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Student>>(StudentFilePath);
-            Teachers = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Teacher>>(TeacherFilePath);
-            Courses = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Course>>(CourseFilePath);*/
-
-
         }
+        public void InitiateSchool(List<Student> NewStudents, List<Teacher> NewTeachers, List<Course> NewCourses, IDGenerator StudentId, IDGenerator TeacherId)
+        {
+            foreach(Student student in NewStudents)
+            {
+                SchoolStudents.Add(student);
+                StudentId.currentID++;
+            }
 
+            foreach (Teacher teacher in NewTeachers)
+            {
+                Teachers.Add(teacher);
+                TeacherId.currentID++;
+            }
+
+            foreach(Course course in NewCourses)
+            {
+                Courses.Add(course);
+            }
+        }
         public void AddToSchool(Student newStudent)
         {
-            Students.Add(newStudent);
-            GeneralFunctions.JsonSerialization.WriteToJsonFile<List<Student>>(StudentFilePath, Students);
+            SchoolStudents.Add(newStudent);
+            GeneralFunctions.JsonSerialization.WriteToJsonFile<List<Student>>(StudentFilePath, SchoolStudents);
         }
         public void AddToSchool(Teacher newValue)
         {
@@ -91,12 +99,12 @@ namespace SchoolManagement.Models
         
         public void UpdateSchool()
         {
+            GeneralFunctions.JsonSerialization.WriteToJsonFile<List<Student>>(StudentFilePath, SchoolStudents);
             GeneralFunctions.JsonSerialization.WriteToJsonFile<List<Course>>(CourseFilePath, Courses);
-            GeneralFunctions.JsonSerialization.WriteToJsonFile<List<Student>>(StudentFilePath, Students);
             GeneralFunctions.JsonSerialization.WriteToJsonFile<List<Teacher>>(TeacherFilePath, Teachers);
-            
         }
-        public enum Major
+
+/*        public enum Major
         {
             Engeniering,
             Medicine,
@@ -109,6 +117,6 @@ namespace SchoolManagement.Models
         {
             string[] Majors = Enum.GetNames(typeof(Major));
             return Majors;
-        }
+        }*/
     }
 }

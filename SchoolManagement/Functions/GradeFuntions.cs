@@ -30,7 +30,7 @@ namespace SchoolManagement.Functions
                             {
                                 Console.Write("Intorduce the Id of the Student: ");
                                 int SelectedStudent = GeneralFunctions.ReadNumber();
-                                foreach (Student student in course.CourseStudents)
+                                foreach (Student student in mySchool.SchoolStudents)
                                 {
                                     if (student.Id == SelectedStudent)
                                     {
@@ -40,6 +40,7 @@ namespace SchoolManagement.Functions
                                         course.CourseGrades.Add(newGrade);
                                         student.StudentGrades.Add(newGrade);
                                         mySchool.UpdateSchool();
+                                        Console.Clear();
                                         Console.Write("Grade set Successfully!");
                                         studentFound = true;
                                         break;
@@ -70,9 +71,10 @@ namespace SchoolManagement.Functions
                         {
                             if (course.ShortID == SelectedCourse)
                             {
+                                Console.WriteLine("Approval Score: " + course.ApprovalScore);
                                 foreach(Grade grade in course.CourseGrades)
                                 {
-                                    Console.WriteLine($"Student: {grade.Student.FirstName}   |   Grade: {grade.Score}" );
+                                    Console.WriteLine($"Student: {grade.Student.FirstName} {grade.Student.LastName}  |   Grade: {grade.Score}" );
                                 }
                                 courseFound = true;
                                 break;
@@ -98,7 +100,7 @@ namespace SchoolManagement.Functions
                                 {
                                     if (grade.Score > course.ApprovalScore)
                                     {
-                                        Console.WriteLine($"Student: {grade.Student.FirstName}   |   Grade: {grade.Score}");
+                                        Console.WriteLine($"Student: {grade.Student.FirstName} {grade.Student.LastName} |   Grade: {grade.Score}");
                                     }                                   
                                 }
                                 courseFound = true;
@@ -125,7 +127,7 @@ namespace SchoolManagement.Functions
                                 {
                                     if (grade.Score < course.ApprovalScore)
                                     {
-                                        Console.WriteLine($"Student: {grade.Student.FirstName}   |   Grade: {grade.Score}");
+                                        Console.WriteLine($"Student: {grade.Student.FirstName} {grade.Student.LastName}  |   Grade: {grade.Score}");
                                     }
                                 }
                                 courseFound = true;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolManagement.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagement.Models
 {
-    internal class People : School
+    internal abstract class People
     {
         private string _firstname;
         private string _lastname;
@@ -70,7 +71,9 @@ namespace SchoolManagement.Models
             }
         }
 
-        public People(string newFirstName, string newLastName, DateTime newBirthDate, string newAddress, string newPhoneNo)
+
+
+        public People(string newFirstName, string newLastName, DateTime newBirthDate, string newAddress, string newPhoneNo) : base()
         {
             _firstname = newFirstName;
             _lastname = newLastName;
@@ -78,5 +81,6 @@ namespace SchoolManagement.Models
             _address = newAddress;
             _phoneNo = newPhoneNo;
         }
+
     }
 }

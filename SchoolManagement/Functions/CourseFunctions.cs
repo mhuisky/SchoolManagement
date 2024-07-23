@@ -25,7 +25,29 @@ namespace SchoolManagement.Functions
                     case 1:
                         //Create Curse
                         Console.Clear();
-                        Course newCourse = new Course("Math 01", 5, "Mathematics  01", "MW 10-11:30AM", 80, 60);
+                        Console.Write("Enter The Course Name: ");
+                        string Name = GeneralFunctions.ReadString();
+
+                        Console.Write("Enter The Course Description: ");
+                        string Description = GeneralFunctions.ReadString();
+
+                        Console.Write("Enter The Schedule: ");
+                        string Schedule = GeneralFunctions.ReadString();
+
+                        Console.Write("Enter Course Credits: ");
+                        int Credits = GeneralFunctions.ReadNumber();
+
+                        Console.Write("Enter The Approval Score: ");
+                        double ApproveScore = GeneralFunctions.ReadDouble();
+
+                        Console.Write("Enter The Minimum GPA: ");
+                        double minGPA = GeneralFunctions.ReadDouble();
+
+                        Console.WriteLine("Enter The Course Status: ");
+                        int StatusSelection = MenuFunctions.CreateMenu(Course.GetStatus()) - 1;
+
+                        Console.Clear();
+                        Course newCourse = new Course(Name, Credits, Description, Schedule, ApproveScore, minGPA, StatusSelection);
                         mySchool.AddToSchool(newCourse);
                         Console.WriteLine($"Course {newCourse.CourseName} was Added!");
                         newCourse.DisplayCourseInfo();
@@ -42,19 +64,28 @@ namespace SchoolManagement.Functions
                             {
                                 Console.Write("Intorduce the Id of the Student: ");
                                 int SelectedStudent = GeneralFunctions.ReadNumber();
-                                foreach (Student student in mySchool.Students)
+                                foreach (Student student in mySchool.SchoolStudents)
                                 {
                                     if (student.Id == SelectedStudent)
                                     {
                                         if (student.GPA < course.MinGPA)
                                         {
-                                            throw new ArgumentException($"The Studnet {student.FirstName} does not meet the Rquiered GPA!");
+                                            throw new ArgumentException($"The Studnet {student.FirstName} {student.LastName} does not meet the Rquiered GPA!");
                                         }
 
                                         if (student.CreditsErned < course.Credits)
                                         {
-                                            throw new ArgumentException($"The Studnet {student.FirstName} does not Have the Rquiered Credits!");
+                                            throw new ArgumentException($"The Studnet {student.FirstName} {student.LastName} does not Have the Rquiered Credits!");
                                         }
+
+                                        foreach (Student student2 in course.CourseStudents)
+                                        {
+                                            if(student.Id == student2.Id)
+                                            {
+                                                throw new ArgumentException($"The Studnet {student.FirstName} {student.LastName} is alredy enrrolled in the Course!");
+                                            }
+                                        }
+                                        
                                         course.EnrollStudnet(student);
                                         mySchool.UpdateSchool();
                                         studentFound = true;
@@ -92,6 +123,8 @@ namespace SchoolManagement.Functions
                                     {
                                         course.AddTeacher(teacher);
                                         mySchool.UpdateSchool();
+                                        Console.Clear();
+                                        Console.WriteLine($"Teacher {teacher.FirstName} {teacher.LastName} was Added to {course.CourseName} Course");
                                         teacherFound = true;
                                     }
                                 }

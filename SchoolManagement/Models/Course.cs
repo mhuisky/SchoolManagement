@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static SchoolManagement.Models.School;
 
 namespace SchoolManagement.Models
 {
@@ -16,7 +17,7 @@ namespace SchoolManagement.Models
         private List<Student> _courseStudents;
         private string _description;
         private string _schedule;
-        // private enum
+        private Status _status;
         private double _approvalScore;
         private double _minGPA;
         private List<Grade> _coursegrades;
@@ -26,7 +27,9 @@ namespace SchoolManagement.Models
             get { return _id; }
             set { _id = value; }
         }
-        public string ShortID = GeneralFunctions.GetShortId(Id);
+        public string ShortID;
+
+ 
         public string CourseName
         {
             get { return _coursename; }
@@ -37,13 +40,37 @@ namespace SchoolManagement.Models
             get { return _credits; }
             set { _credits = value; }
         }
+
+        public string Schedule
+        {
+            get
+            {
+                return _schedule;
+            }
+            set
+            {
+                _schedule = value;
+            }
+        }
+        public Status ActualStatus
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+
+            _status = value; 
+            }
+        }
         public Teacher CourseTeacher
         {
             get 
             {
                 if (_teacher == null)
                 {
-                    Teacher emptyTeacher = new Teacher("N/A","", Utils.Utils.GetDate("1/1/0001"), "", "","","",0);
+                    Teacher emptyTeacher = new Teacher(0,"N/A","", Utils.Utils.GetDate("1/1/0001"), "", "","","",0);
                     return emptyTeacher;
                 }
                 return _teacher; 
@@ -65,9 +92,13 @@ namespace SchoolManagement.Models
             get { return _approvalScore; }
             set 
             {
-                if (value < 0)
+                if (value < 1)
                 {
-                    throw new ArgumentException("Approval Score Can't be Negative!");
+                    throw new ArgumentException("Approval Score Can't be less than 1!");
+                }
+                if (value > 100)
+                {
+                    throw new ArgumentException("Approval Score Can't be higher than 100!");
                 }
                 _approvalScore = value; 
             }
@@ -97,9 +128,10 @@ namespace SchoolManagement.Models
             }
         }
 
-        public Course( string NewCourseName, int newCredits, string newDescription, string newSchedule, double newApprovalScore, double newMinGPA)
+        public Course( string NewCourseName, int newCredits, string newDescription, string newSchedule, double newApprovalScore, double newMinGPA, int newStatus)
         {
             _id = Guid.NewGuid();
+            ShortID = GeneralFunctions.GetShortId(_id);
             _coursename = NewCourseName;
             _credits = newCredits;
             _description = newDescription;
@@ -108,13 +140,16 @@ namespace SchoolManagement.Models
             _schedule = newSchedule;
             _courseStudents = new List<Student>();
             _coursegrades = new List<Grade>();
+            _status = (Status)newStatus;
 
         }
 
         public void EnrollStudnet(Student newStudent)
         {
             CourseStudents.Add(newStudent);
-            Console.WriteLine($"Studnet {newStudent.FirstName} was Added To the Course {CourseName}!");
+            newStudent.CreditsErned = newStudent.CreditsErned - Credits;
+            Console.WriteLine($"Studnet {newStudent.FirstName} {newStudent.LastName} was Added To the Course {CourseName}!");
+
         }
 
         public void AddTeacher(Teacher newTeacher)
@@ -125,21 +160,42 @@ namespace SchoolManagement.Models
 
         public void DisplayCourseInfo()
         {
-            Console.WriteLine("Course ID: " + ShortID);
-            Console.WriteLine("Course Name: " + CourseName);
+            Console.WriteLine("Course ID         : " + ShortID);
+            Console.WriteLine("Course Name       : " + CourseName);
             Console.WriteLine("Course Description: " + Description);
-            Console.WriteLine("Schedule: " + _schedule);
-            Console.WriteLine("Credits: " + Credits);
-            Console.WriteLine("Approval Score: " + ApprovalScore);
-            Console.WriteLine("Min GPA: " + MinGPA);
-            Console.WriteLine("Teacher: " + CourseTeacher.FirstName);
-            Console.WriteLine("Students: ");
-            foreach(Student student in CourseStudents) 
+            Console.WriteLine("Schedule          : " + Schedule);
+            Console.WriteLine("Status            : " + ActualStatus);
+            Console.WriteLine("Credits           : " + Credits);
+            Console.WriteLine("Approval Score    : " + ApprovalScore);
+            Console.WriteLine("Min GPA           : " + MinGPA);
+            Console.WriteLine("Teacher           : " + CourseTeacher.FirstName + " " + CourseTeacher.LastName);
+
+            if (!CourseStudents.Any())
             {
+                Console.WriteLine("Students          : N/A");
+            } else {
+                Console.WriteLine("Students          : ");
                 Console.WriteLine("------------------------------------");
-                student.DisplayStudentInfo();
-                Console.WriteLine("------------------------------------");
+                foreach (Student student in CourseStudents)
+                {
+                    Console.WriteLine($"{student.FirstName} {student.LastName}");
+                    Console.WriteLine("------------------------------------");
+                } 
             }
+        }
+
+        public enum Status
+        {
+            Ready,
+            Started,
+            Finished,
+            Close
+        }
+
+        public static string[] GetStatus()
+        {
+            string[] Status = Enum.GetNames(typeof(Status));
+            return Status;
         }
     }
 }
