@@ -30,7 +30,7 @@ namespace SchoolManagement.Functions
                             {
                                 Console.Write("Intorduce the Id of the Student: ");
                                 int SelectedStudent = GeneralFunctions.ReadNumber();
-                                foreach (Student student in mySchool.SchoolStudents)
+                                foreach (Student student in course.CourseStudents)
                                 {
                                     if (student.Id == SelectedStudent)
                                     {

@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|c:\\users\\marcelo.munoz\\source\\repos\\schoolmanagement\\schoolmanagement\\functions\\gradefuntions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|solutionrelative:schoolmanagement\\functions\\gradefuntions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|c:\\users\\marcelo.munoz\\source\\repos\\schoolmanagement\\schoolmanagement\\models\\grade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|solutionrelative:schoolmanagement\\models\\grade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|c:\\users\\marcelo.munoz\\source\\repos\\schoolmanagement\\schoolmanagement\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|solutionrelative:schoolmanagement\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,20 +19,12 @@
       "RelativeMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|solutionrelative:schoolmanagement\\functions\\coursefunctions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|c:\\users\\marcelo.munoz\\source\\repos\\schoolmanagement\\schoolmanagement\\functions\\gradefuntions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|solutionrelative:schoolmanagement\\functions\\gradefuntions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|c:\\users\\marcelo.munoz\\source\\repos\\schoolmanagement\\schoolmanagement\\functions\\studentfunctions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|solutionrelative:schoolmanagement\\functions\\studentfunctions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|c:\\users\\marcelo.munoz\\source\\repos\\schoolmanagement\\schoolmanagement\\models\\school.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|solutionrelative:schoolmanagement\\models\\school.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|c:\\users\\marcelo.munoz\\source\\repos\\schoolmanagement\\schoolmanagement\\models\\grade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|solutionrelative:schoolmanagement\\models\\grade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{750C110A-03E6-4F08-B3E2-E23B05E99AC9}|SchoolManagement\\SchoolManagement.csproj|c:\\users\\marcelo.munoz\\source\\repos\\schoolmanagement\\schoolmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 216,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
@@ -76,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "School.cs",
               "DocumentMoniker": "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\SchoolManagement\\Models\\School.cs",
               "RelativeDocumentMoniker": "SchoolManagement\\Models\\School.cs",
@@ -118,13 +118,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Course.cs",
               "DocumentMoniker": "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\SchoolManagement\\Models\\Course.cs",
               "RelativeDocumentMoniker": "SchoolManagement\\Models\\Course.cs",
               "ToolTip": "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\SchoolManagement\\Models\\Course.cs",
               "RelativeToolTip": "SchoolManagement\\Models\\Course.cs",
-              "ViewState": "AQIAAIgAAAAAAAAAAADwv5YAAABUAAAA",
+              "ViewState": "AQIAAHYAAAAAAAAAAAAkwJYAAABUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-18T16:59:18.529Z",
               "IsPinned": true,
@@ -132,7 +132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "Grade.cs",
               "DocumentMoniker": "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\SchoolManagement\\Models\\Grade.cs",
               "RelativeDocumentMoniker": "SchoolManagement\\Models\\Grade.cs",
@@ -146,7 +146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "StudentFunctions.cs",
               "DocumentMoniker": "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\SchoolManagement\\Functions\\StudentFunctions.cs",
               "RelativeDocumentMoniker": "SchoolManagement\\Functions\\StudentFunctions.cs",
@@ -172,7 +172,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "CourseFunctions.cs",
               "DocumentMoniker": "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\SchoolManagement\\Functions\\CourseFunctions.cs",
               "RelativeDocumentMoniker": "SchoolManagement\\Functions\\CourseFunctions.cs",
@@ -185,13 +185,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "GradeFuntions.cs",
               "DocumentMoniker": "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\SchoolManagement\\Functions\\GradeFuntions.cs",
               "RelativeDocumentMoniker": "SchoolManagement\\Functions\\GradeFuntions.cs",
               "ToolTip": "C:\\Users\\marcelo.munoz\\source\\repos\\SchoolManagement\\SchoolManagement\\Functions\\GradeFuntions.cs",
               "RelativeToolTip": "SchoolManagement\\Functions\\GradeFuntions.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAIwCgAAAAoAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-19T21:58:46.966Z",
               "EditorCaption": ""
