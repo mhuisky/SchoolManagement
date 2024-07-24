@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolManagement.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -79,9 +80,9 @@ namespace SchoolManagement.Models
             }
         }
 
-        public Teacher(string newFirstName, string newLastName, DateTime newBirthDate, string newAddress, string newPhoneNo,string newDepartment , string newSpecialization, decimal newSalary) : base(newFirstName, newLastName, newBirthDate, newAddress, newPhoneNo)
+        public Teacher(int newID, string newFirstName, string newLastName, DateTime newBirthDate, string newAddress, string newPhoneNo,string newDepartment , string newSpecialization, decimal newSalary) : base(newFirstName, newLastName, newBirthDate, newAddress, newPhoneNo)
         {
-            _id = base.TeacheridGenerator.GenerateID();
+            _id = newID;
             _hireDate = DateTime.Now;
             _department = newDepartment;
             _specialization = newSpecialization;
@@ -90,13 +91,15 @@ namespace SchoolManagement.Models
 
         public void DisplayTeacherInfo()
         {
-            Console.WriteLine("ID: " + Id);
-            Console.WriteLine("First Name: " + FirstName);
-            Console.WriteLine("Birth Date: " + BirthDate.ToString("d"));
-            Console.WriteLine("Department: " + Department);
+            Console.WriteLine("ID            : " + Id);
+            Console.WriteLine("First Name    : " + FirstName);
+            Console.WriteLine("Last Name     : " + LastName);
+            Console.WriteLine("Birth Date    : " + BirthDate.ToString("d"));
+            Console.WriteLine("Phone No      : " + PhoneNo);
+            Console.WriteLine("Department    : " + Department);
             Console.WriteLine("Specialization: " + Specialization);
-            Console.WriteLine("HiretDate: " + HireDate.ToString("d"));
-            Console.WriteLine("Salary: " + Salary);
+            Console.WriteLine("HiretDate     : " + HireDate.ToString("d"));
+            Console.WriteLine("Salary        : " + Salary);
         }
 
     }

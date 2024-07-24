@@ -8,7 +8,7 @@ string[] MainMenu = { "Students", "Staff", "Courses", "Grades", "Exit" };
 string[] StudentMenu = { "Add Student", "Earn Credits", "View Student Information", "Back" };
 string[] StafftMenu = { "Add Teacher","View Teacher Information", "Back" };
 string[] CursesMenu = { "Create Curses", "Enroll Student In Course", "Assing Teacher to course", "View Course Information", "Back" };
-string[] GradesMenu = { "Grade Course", "List Course Grate", "List Approved Students", "List Failed Students", "Back" };
+string[] GradesMenu = { "Grade Course", "List Course Grade", "List Approved Students", "List Failed Students", "Back" };
 
 int selection = 0;
 int studentSelection = 0;
@@ -16,10 +16,18 @@ int staffSelection = 0;
 int courseSelection = 0;
 int gradeSelection = 0;
 
+
+
 School mySchool = new School();
-mySchool.Students = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Student>>(mySchool.StudentFilePath);
-mySchool.Teachers = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Teacher>>(mySchool.TeacherFilePath);
-mySchool.Courses = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Course>>(mySchool.CourseFilePath);
+
+List<Student> AllStudents = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Student>>(mySchool.StudentFilePath);
+List<Teacher> AllTeachers = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Teacher>>(mySchool.TeacherFilePath);
+List<Course> AllCourses = GeneralFunctions.JsonSerialization.ReadFromJsonFile<List<Course>>(mySchool.CourseFilePath);
+
+IDGenerator StudentidGenerator = new IDGenerator();
+IDGenerator TeacheridGenerator = new IDGenerator();
+
+mySchool.InitiateSchool(AllStudents, AllTeachers, AllCourses, StudentidGenerator, TeacheridGenerator);
 
 do
 {
@@ -36,7 +44,7 @@ do
                 {
                     MenuFunctions.PrintHeader("Students");
                     studentSelection = MenuFunctions.CreateMenu(StudentMenu);
-                    StudentsFunctions.StudentsManagement(studentSelection, mySchool);
+                    StudentsFunctions.StudentsManagement(studentSelection, mySchool, StudentidGenerator);
                     Console.Clear();
                 } while (studentSelection != 4);
                 break;
@@ -46,7 +54,7 @@ do
                 {
                     MenuFunctions.PrintHeader("Staff");
                     staffSelection = MenuFunctions.CreateMenu(StafftMenu);
-                    StaffFunctions.StafManagement(staffSelection,mySchool);
+                    StaffFunctions.StafManagement(staffSelection,mySchool, TeacheridGenerator);
                     Console.Clear();
                 } while (staffSelection != 3);
                 break;

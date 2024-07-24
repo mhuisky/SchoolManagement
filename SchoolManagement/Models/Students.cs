@@ -16,7 +16,7 @@ namespace SchoolManagement.Models
         private Major _major;
         private double _gpa;
         private int _creditsErned;
-        private List <Grade> _grades;
+        private List <Grade> _studentgrades;
         private List<Course> _studentCourses;
 
         public int Id 
@@ -87,32 +87,34 @@ namespace SchoolManagement.Models
         {
             get
             {
-                return _grades;
+                return _studentgrades;
             }
             set
             {
-                _grades = value;
+                _studentgrades = value;
             }
         }
 
-        public Student(string newFirstName, string newLastName, DateTime newBirthDate, string newAddress, string newPhoneNo, double newGPA, int newMajor) : base(newFirstName, newLastName, newBirthDate, newAddress, newPhoneNo)
+        public Student(int newID, string newFirstName, string newLastName, DateTime newBirthDate, string newAddress, string newPhoneNo, double newGPA, int newMajor) : base(newFirstName, newLastName, newBirthDate, newAddress, newPhoneNo)
         {
-            _id = base.StudentidGenerator.GenerateID();
+            _id = newID;
             _gpa = newGPA;
             _enrrollmentDate = DateTime.Now;
             _major = (Major)newMajor;
-            _grades = new List<Grade>();
+            _studentgrades = new List<Grade>();
             _studentCourses = new List<Course>();
         }
 
         public void DisplayStudentInfo()
         {
-            Console.WriteLine("ID: " + Id);
-            Console.WriteLine("First Name: " + FirstName);
-            Console.WriteLine("Birth Date: " + BirthDate.ToString("d"));
-            Console.WriteLine("Major: " + StudentMajor);
+            Console.WriteLine("ID             : " + Id);
+            Console.WriteLine("First Name     : " + FirstName);
+            Console.WriteLine("Last Name      : " + LastName);
+            Console.WriteLine("Birth Date     : " + BirthDate.ToString("d"));
+            Console.WriteLine("Phone No       : " + PhoneNo);
+            Console.WriteLine("Major          : " + StudentMajor);
             Console.WriteLine("EnrrollmentDate: " + EnrrollmentDate.ToString("d"));
-            Console.WriteLine("Credits: " + CreditsErned);
+            Console.WriteLine("Credits        : " + CreditsErned);
         }
 
         public void AddCredits(int Value)
@@ -122,6 +124,21 @@ namespace SchoolManagement.Models
                 throw new ArgumentOutOfRangeException("value");
             }
             CreditsErned = CreditsErned + Value;
+        }
+
+        public enum Major
+        {
+            Engeniering,
+            Medicine,
+            Administration,
+            Languages,
+            Economycs
+        }
+
+        public static string[] GetMajors()
+        {
+            string[] Majors = Enum.GetNames(typeof(Major));
+            return Majors;
         }
     }
 
